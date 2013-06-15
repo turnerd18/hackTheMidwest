@@ -32,6 +32,3 @@ func NewShelter (newName, newPhone, newEmail, newID, newAddress1, newAddress2, n
 }
 
 
-func main() {
-	shelter := NewShelter("shelter",
-
