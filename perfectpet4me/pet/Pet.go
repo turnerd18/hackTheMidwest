@@ -6,7 +6,7 @@ import "fmt"
 
 type Pet struct {
 	name string 
-	age string 			//baby, young, adult, or senior
+	age string 			//Baby, Young, Adult, or Senior
 	sex string 			// M or F
 	animalType string 	//Dog, Cat, Small&Furry, BarnYard, Bird, Horse, Pig, Rabbit, or Reptile
 	breed string
@@ -28,3 +28,11 @@ func NewPet (newName, newAge, newSex, newAnimalType, newBreed, newSize string, n
 
 	return newPet
 }
+
+
+/*func main () {
+	pet := NewPet("Fluffy", "Young", "M", "Dog", "Doberman", "L", 123456)
+
+	fmt.Println(pet.name)
+	fmt.Println(pet.shelterID)
+}*/
