@@ -1,4 +1,4 @@
-application: dtgoapps
+application: perfectpet4me
 version: 1
 runtime: go
 api_version: go1
