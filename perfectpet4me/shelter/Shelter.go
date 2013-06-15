@@ -16,7 +16,7 @@ type Shelter struct {
 }
 
 
-func NewShelter (newName, newPhone, newEmail, newID, newAddress1, newAddress2, newState, newZip) Shelter* {
+func NewShelter (newName, newPhone, newEmail, newID, newAddress1, newAddress2, newState, newZip) *Shelter {
 	newShelter := new(Shelter)
 
 	newShelter.name = newName
@@ -31,4 +31,7 @@ func NewShelter (newName, newPhone, newEmail, newID, newAddress1, newAddress2, n
 	return newShelter
 }
 
+
+func main() {
+	shelter := NewShelter("shelter",
 
