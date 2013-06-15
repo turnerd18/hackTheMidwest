@@ -16,7 +16,7 @@ type Pet struct {
 }
 
 
-func NewPet (newName, newAge, newSex, newAnimalType, newBreed, newSize string, newShelterID string) *Pet {
+func NewPet1(newName, newAge, newSex, newAnimalType, newBreed, newSize string, newShelterID string) *Pet {
 	newPet := new(Pet)
 
 	newPet.Name = newName
@@ -31,7 +31,7 @@ func NewPet (newName, newAge, newSex, newAnimalType, newBreed, newSize string, n
 }
 
 
-func NewPet1(newName, newAge, newSex, newAnimalType, newBreed, newSize, newShelterID, newContactName, newPhone, newEmail, newAddress1, newAddress2, newCityState, newZip string) *Pet {
+func NewPet(newName, newAge, newSex, newAnimalType, newBreed, newSize, newShelterID, newContactName, newPhone, newEmail, newAddress1, newAddress2, newCityState, newZip string) *Pet {
 	newPet := new(Pet)
 
 	newPet.Name = newName
