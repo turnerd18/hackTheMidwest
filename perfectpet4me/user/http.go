@@ -5,8 +5,13 @@ import (
 )
 
 func init() {
-	http.HandleFunc("/user", start)
+	http.HandleFunc("/user", handler)
 }
 
-func start(w http.ResponseWriter, r *http.Request) {
+var userTmpls = template.Must(template.ParseFiles("hackTheMidwest/perfectpet4me/templates/base.html", "templates/login.html"))
+
+func handler(w http.ResponseWriter, r *http.Request) {
+	if err := listTmpl.Execute(w, tc); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }
