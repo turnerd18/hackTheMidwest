@@ -12,11 +12,11 @@ type Shelter struct {
 	Address1 string
 	Address2 string
 	State string
-	Zip dtring
+	Zip string
 }
 
 
-func NewShelter (newName, newPhone, newEmail, newID, newAddress1, newAddress2, newState, newZip) *Shelter {
+func NewShelter (newName, newPhone, newEmail, newID, newAddress1, newAddress2, newState, newZip string) *Shelter {
 	newShelter := new(Shelter)
 
 	newShelter.Name = newName
