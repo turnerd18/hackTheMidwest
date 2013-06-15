@@ -4,6 +4,7 @@ package user
 //import "fmt"
 
 
+
 type User struct {
 	FirstName string
 	LastName string
