@@ -19,12 +19,12 @@ type PetLooker struct {
 }
 
 func init() {
-	http.HanldeFunc("/", handler)
+	http.HandleFunc("/", handler)
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	c := appengine.NewContext(r)
-	pl := PetLooker{}
+	//pl := PetLooker{}
 
 	u := user.Current(c)
 	if u == nil {

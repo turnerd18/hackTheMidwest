@@ -5,7 +5,7 @@ import (
 )
 
 func init() {
-	http.HanldeFunc("/match", start)
+	http.HandleFunc("/match", start)
 }
 
 func start(w http.ResponseWriter, r *http.Request) {
