@@ -8,11 +8,11 @@ type Shelter struct {
 	name string
 	phone string
 	email string
-	ID
-	address1
-	address2
-	state
-	zip
+	ID string
+	address1 string
+	address2 string
+	state string
+	zip dtring
 }
 
 
