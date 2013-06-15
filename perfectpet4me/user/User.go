@@ -1,28 +1,28 @@
-package main
+package user
 
 
 import "fmt"
 
 
 type User struct {
-	firstName string
-	lastName string
-	phone string
-	email string
-	cityState string
-	zip string
+	FirstName string
+	LastName string
+	Phone string
+	Email string
+	CityState string
+	Zip string
 }
 
 
 func NewUser(newFirstName, newLastName, newPhone, newEmail, newCityState, newZip string) *User {
 	newUser := new(User)
 
-	newUser.firstName = newFirstName
-	newUser.lastName = newLastName
-	newUser.phone = newPhone
-	newUser.email = newEmail
-	newUser.cityState = newCityState
-	newUser.zip = newZip
+	newUser.FirstName = newFirstName
+	newUser.LastName = newLastName
+	newUser.Phone = newPhone
+	newUser.Email = newEmail
+	newUser.CityState = newCityState
+	newUser.Zip = newZip
 	
 	return newUser
 }
@@ -31,10 +31,10 @@ func NewUser(newFirstName, newLastName, newPhone, newEmail, newCityState, newZip
 /*func main() {
 	user1 := NewUser("John", "Smith", "1234567890", "jsmith@go.com", "lawrence,ks", "66044")
 
-	fmt.Println(user1.firstName)
-	fmt.Println(user1.lastName)
-	fmt.Println(user1.phone)
-	fmt.Println(user1.email)
+	fmt.Println(user1.FirstName)
+	fmt.Println(user1.LastName)
+	fmt.Println(user1.Phone)
+	fmt.Println(user1.Email)
 }*/
 
 
