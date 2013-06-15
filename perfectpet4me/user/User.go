@@ -1,7 +1,7 @@
 package user
 
 
-import "fmt"
+//import "fmt"
 
 
 type User struct {
