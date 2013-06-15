@@ -11,7 +11,7 @@ func init() {
 	http.HandleFunc("/user", handler)
 }
 
-var userTmpls = template.Must(template.ParseFiles("templates/base.html", "perfectpet4me/user/templates/login.html"))
+var userTmpls = template.Must(template.ParseFiles("templates/base.html", "perfectpet4me/user/templates/user.html"))
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	//User u :=
