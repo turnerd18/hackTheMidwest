@@ -4,8 +4,8 @@ import (
 	"appengine"
 	//"appengine/datastore"
 	"appengine/user"
-	//"html/template"
 	"fmt"
+	"html/template"
 	"net/http"
 )
 
@@ -22,6 +22,8 @@ func init() {
 	http.HandleFunc("/", handler)
 }
 
+var baseTmpl = template.Must(template.ParseFiles("templates/base.html"))
+
 func handler(w http.ResponseWriter, r *http.Request) {
 	c := appengine.NewContext(r)
 	//pl := PetLooker{}
@@ -37,5 +39,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusFound)
 		return
 	}
-	fmt.Fprintf(w, "Hello, %v!", u)
+	if err := baseTmpl.Execute(w, u); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }
