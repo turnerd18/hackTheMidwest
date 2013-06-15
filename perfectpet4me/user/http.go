@@ -1,6 +1,9 @@
 package user
 
 import (
+	//"appengine"
+	//"appengine/datastore"
+	"html/template"
 	"net/http"
 )
 
@@ -8,10 +11,12 @@ func init() {
 	http.HandleFunc("/user", handler)
 }
 
-var userTmpls = template.Must(template.ParseFiles("hackTheMidwest/perfectpet4me/templates/base.html", "templates/login.html"))
+var userTmpls = template.Must(template.ParseFiles("templates/base.html", "perfectpet4me/user/templates/login.html"))
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	if err := listTmpl.Execute(w, tc); err != nil {
+	//User u :=
+
+	if err := userTmpls.Execute(w, nil); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }

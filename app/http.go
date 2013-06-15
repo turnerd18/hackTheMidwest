@@ -4,7 +4,6 @@ import (
 	"appengine"
 	//"appengine/datastore"
 	"appengine/user"
-	"fmt"
 	"html/template"
 	"net/http"
 )
