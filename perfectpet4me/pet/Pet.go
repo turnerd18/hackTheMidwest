@@ -1,7 +1,7 @@
 package pet
 
 
-import "fmt"
+//import "fmt"
 
 
 type Pet struct {
