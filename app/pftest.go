@@ -19,6 +19,6 @@ func start(w http.ResponseWriter, r *http.Request) {
         fmt.Fprintf(w, "%v\n", "error")
     }
 
-    testpet := pf.GetRandomPet("dog")
-    fmt.Fprintf(w, "%v\n", testpet.Name)
+    testpet := pf.GetPets("dog","66067", 5)
+    fmt.Fprintf(w, "%v\n", testpet[0].Name)
 }
