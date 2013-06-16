@@ -10,3 +10,13 @@
 	.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus { color: #ffffff; background-color: #c0392b; }
 	.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus { background-color: #c0392b; }
 	.navbar-inverse .navbar-nav > li > a { color: #e0e0e0; }
+
+/* Animals */
+#puppy { background-image: url('../img/brown-puppy.png'); background-repeat: no-repeat; width: 105px; height: 118px; float: left; position: absolute; margin-left: 774px; margin-top: 200px; z-index: 1; visibility: hidden; }
+#bunny { background-image: url('../img/bunny.png'); background-repeat: no-repeat; width: 85px; height: 133px; float: left; position: absolute; margin-left: 674px; margin-top: 200px; z-index: 2; visibility: hidden; }
+#girlPuppy { background-image: url('../img/girl-puppy.png'); background-repeat: no-repeat; width: 118px; height: 110px; float: left; position: absolute; margin-left: 574px; margin-top: 200px; z-index: 3; visibility: hidden; }
+#lizard { background-image: url('../img/lizard.png'); background-repeat: no-repeat; width: 127px; height: 94px; float: left; position: absolute; margin-left: 474px; margin-top: 200px; z-index: 4; visibility: hidden; }
+#furry { background-image: url('../img/misc-furry.png'); background-repeat: no-repeat; width: 69px; height: 64px; float: left; position: absolute; margin-left: 374px; margin-top: 200px; z-index: 5; visibility: hidden; }
+#pig { background-image: url('../img/pig.png'); background-repeat: no-repeat; width: 118px; height: 97px; float: left; position: absolute; margin-left: 274px; margin-top: 200px; z-index: 6; visibility: hidden; }
+#stripedKitty { background-image: url('../img/striped-kitty.png'); background-repeat: no-repeat; width: 133px; height: 151px; float: left; position: absolute; margin-left: 174px; margin-top: 200px; z-index: 7; visibility: hidden; }
+#whiteKitty { background-image: url('../img/white-kitty.png'); background-repeat: no-repeat; width: 139px; height: 111px; float: left; position: absolute; margin-left: 74px; margin-top: 200px; z-index: 8; visibility: hidden; }
