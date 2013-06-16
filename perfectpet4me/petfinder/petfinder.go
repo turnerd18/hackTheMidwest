@@ -9,6 +9,7 @@ import (
     "net/http"
     petp "perfectpet4me/pet"
     "strings"
+    "strconv"
 
     "appengine"
     "appengine/urlfetch"
@@ -193,6 +194,49 @@ func (pf *PetFinder) GetPet(animal string, location string) (*petp.Pet) {
         pfetch.Petfinder.Pets.Pet.Media.Photos.Photo
         )
 */
+}
+
+func (pf *PetFinder) GetPets(animal string, location string, numResults int) ([]*petp.Pet) {
+    errstr := ""
+    method := "pet.find"
+    args := map[string]string {
+        "key"       : API_KEY,
+        "token"     : pf.Token,
+        "animal"    : animal,
+        "location"  : location,
+        "count"     : strconv.Itoa(numResults),
+    }
+    getstr := pf.RequestBuilder(method, args)
+
+    body, errstr := pf.Execute(getstr)
+    if errstr != "" {
+        return nil
+    }
+
+    j, _ := simplejson.NewJson(body)
+    var pets []*petp.Pet
+    for i := 0; i < numResults; i++ {
+        p := new(petp.Pet)
+        jo := j.Get("petfinder").Get("pets").Get("pet").GetIndex(i)
+        p.Id, _ = jo.Get("id").Get("$t").String()
+        p.Name, _ = jo.Get("name").Get("$t").String()
+        p.Age, _ = jo.Get("age").Get("$t").String()
+        p.AnimalType, _ = jo.Get("animal").Get("$t").String()
+        p.Breed, _ = jo.Get("breeds").Get("breed").Get("$t").String()
+        p.Sex, _ = jo.Get("sex").Get("$t").String()
+        x, _ := jo.Get("media").Get("photos").Get("photo").GetIndex(0).Get("$t").String()
+        t, _ := jo.Get("media").Get("photos").Get("photo").GetIndex(4).Get("$t").String()
+        p.PictureURLs[0] = map[string]string {
+        "x" : x,
+        "t" : t,
+        }
+        pets = append(pets, p)
+    }
+    fmt.Fprintf(pf.w, "%v\n", pets)
+    //temp, _ := jo.Get("media").Get("photos").Get("photo").GetIndex(0).Get("$t").String()
+    //fmt.Fprintf(pf.w, "%v\n", temp)
+
+    return pets
 }
 
 func (pf *PetFinder) RequestBuilder(apicall string, args map[string]string) string {
