@@ -20,4 +20,5 @@ func start(w http.ResponseWriter, r *http.Request) {
 
     testpet := pf.GetPet("dog","66067")
     fmt.Fprintf(w, "%v\n", testpet.Name["$t"])
+    fmt.Fprintf(w, "%v\n", testpet.Id["$t"])
 }

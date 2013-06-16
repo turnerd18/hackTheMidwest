@@ -71,6 +71,7 @@ type PetType struct {
         }
     }
     Size map[string]string
+    Id map[string]string
 }
 
 type PetFetcher struct {
