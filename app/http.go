@@ -2,20 +2,12 @@ package perfectpet4me
 
 import (
 	"appengine"
-	//"appengine/datastore"
-	"appengine/user"
+	"appengine/datastore"
+	aeuser "appengine/user"
 	"html/template"
 	"net/http"
+	"perfectpet4me/user"
 )
-
-type PetLooker struct {
-	Email string
-	Name  string
-	City  string
-	State string
-	Zip   string
-	Phone string
-}
 
 func init() {
 	http.HandleFunc("/", handler)
@@ -25,11 +17,10 @@ var baseTmpl = template.Must(template.ParseFiles("templates/base.html"))
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	c := appengine.NewContext(r)
-	//pl := PetLooker{}
 
-	u := user.Current(c)
+	u := aeuser.Current(c)
 	if u == nil {
-		url, err := user.LoginURL(c, r.URL.String())
+		url, err := aeuser.LoginURL(c, r.URL.String())
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -37,8 +28,16 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Location", url)
 		w.WriteHeader(http.StatusFound)
 		return
+	} else {
+		k := datastore.NewKey(c, "user", u.Email, 0, nil)
+		ppu := user.User{
+			Email: u.Email,
+		}
+		if _, err := datastore.Put(c, k, &ppu); err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
 	}
-	if err := baseTmpl.Execute(w, u); err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+	http.Redirect(w, r, "/user", http.StatusMovedPermanently)
+	return
 }

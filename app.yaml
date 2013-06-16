@@ -22,5 +22,11 @@ handlers:
   - url: /js
     static_dir: templates/js
 
+  - url: /favicon\.ico
+    static_files: favicon.ico
+    upload: favicon\.ico
+
   - url: /.*
     script: _go_app
+    login: required
+    secure: always

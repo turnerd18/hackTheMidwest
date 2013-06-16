@@ -1,27 +1,20 @@
 package pet
 
-
-//import "fmt"
-
-
 type Pet struct {
-	Name string 
-	Age string 							//Baby, Young, Adult, or Senior
-	Sex string 							// M or F
-	AnimalType string 					//Dog, Cat, Small&Furry, BarnYard, Bird, Horse, 
-											Pig, Rabbit, or Reptile
-	Breed string
-	Size string							//S, M, L, or XL
-	ShelterID string					//ID of shelter the pet is at
-	ContactInfo map[string]string	
-	PictureURLs [5]map[string]string	//map keys = {"x", "fpm", "pn", "pnt", "t"} 
-											in that order
+	Name        string
+	Age         string //Baby, Young, Adult, or Senior
+	Sex         string // M or F
+	AnimalType  string //Dog, Cat, Small&Furry, BarnYard, Bird, Horse, Pig, Rabbit, or Reptile
+	Breed       string
+	Size        string //S, M, L, or XL
+	ShelterID   string //ID of shelter the pet is at
+	ContactInfo map[string]string
+	PictureURLs [5]map[string]string //map keys = {"x", "fpm", "pn", "pnt", "t"} in that order
 }
 
-
-func NewPet1(newName, newAge, newSex, newAnimalType, newBreed, newSize, 
+func NewPet1(newName, newAge, newSex, newAnimalType, newBreed, newSize,
 	newShelterID string) *Pet {
-	
+
 	newPet := new(Pet)
 
 	newPet.Name = newName
@@ -35,11 +28,10 @@ func NewPet1(newName, newAge, newSex, newAnimalType, newBreed, newSize,
 	return newPet
 }
 
+func NewPet(newName, newAge, newSex, newAnimalType, newBreed, newSize, newShelterID,
+	newContactName, newPhone, newEmail, newAddress1, newAddress2, newCityState, newZip string,
+	newPic1, newPic2, newPic3, newPic4, newPic5 map[string]string) *Pet {
 
-func NewPet(newName, newAge, newSex, newAnimalType, newBreed, newSize, newShelterID, 
-	newContactName, newPhone, newEmail, newAddress1, newAddress2, newCityState, newZip 
-	string, newPic1, newPic2, newPic3, newPic4, newPic5 map[string]string) *Pet {
-	
 	newPet := new(Pet)
 
 	newPet.Name = newName
@@ -73,7 +65,6 @@ func NewPet(newName, newAge, newSex, newAnimalType, newBreed, newSize, newShelte
 
 	return newPet
 }
-
 
 /*func main () {
 	pet1 := NewPet1("Fluffy", "Young", "M", "Dog", "Doberman", "L", "123456")
@@ -119,9 +110,9 @@ func NewPet(newName, newAge, newSex, newAnimalType, newBreed, newSize, newShelte
 		"t"		:	"url5e.com"	}
 
 
-	
-	pet2 := NewPet("Reptar", "Adult", "M", "Reptile", "T-rex", "XL", "654321", "Tommy", 
-		"0987654321", "tommy@go.com", "1234 Street Ave", "Apt A1", "Lawrence, KS", 
+
+	pet2 := NewPet("Reptar", "Adult", "M", "Reptile", "T-rex", "XL", "654321", "Tommy",
+		"0987654321", "tommy@go.com", "1234 Street Ave", "Apt A1", "Lawrence, KS",
 		"66044", urlmap1, urlmap2, urlmap3, urlmap4, urlmap5)
 
 	fmt.Println(pet2.Name)
@@ -143,13 +134,13 @@ func NewPet(newName, newAge, newSex, newAnimalType, newBreed, newSize, newShelte
 	fmt.Println(pet2.PictureURLs[0]["fpm"])
 	fmt.Println(pet2.PictureURLs[0]["pn"])
 	fmt.Println(pet2.PictureURLs[0]["pnt"])
-	fmt.Println(pet2.PictureURLs[0]["t"])	
+	fmt.Println(pet2.PictureURLs[0]["t"])
 
 	fmt.Println(pet2.PictureURLs[1]["x"])
 	fmt.Println(pet2.PictureURLs[1]["fpm"])
 	fmt.Println(pet2.PictureURLs[1]["pn"])
 	fmt.Println(pet2.PictureURLs[1]["pnt"])
-	fmt.Println(pet2.PictureURLs[1]["t"])	
+	fmt.Println(pet2.PictureURLs[1]["t"])
 
 	fmt.Println(pet2.PictureURLs[2]["x"])
 	fmt.Println(pet2.PictureURLs[2]["fpm"])
