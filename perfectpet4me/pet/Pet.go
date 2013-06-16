@@ -4,6 +4,7 @@ type Pet struct {
 	Name        string
 	Age         string //Baby, Young, Adult, or Senior
 	Sex         string // M or F
+    Id          string
 	AnimalType  string //Dog, Cat, Small&Furry, BarnYard, Bird, Horse, Pig, Rabbit, or Reptile
 	Breed       string
 	Size        string //S, M, L, or XL
