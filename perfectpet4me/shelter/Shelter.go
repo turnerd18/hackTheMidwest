@@ -1,4 +1,4 @@
-package main
+package shelter
 
 
 //import "fmt"
@@ -11,7 +11,7 @@ type Shelter struct {
 	ID string
 	Address1 string
 	Address2 string
-	State string
+	CityState string
 	Zip string
 }
 
@@ -25,7 +25,7 @@ func NewShelter (newName, newPhone, newEmail, newID, newAddress1, newAddress2, n
 	newShelter.ID = newID
 	newShelter.Address1 = newAddress1
 	newShelter.Address2 = newAddress2
-	newShelter.State = newState
+	newShelter.CityState = newState
 	newShelter.Zip = newZip
 
 	return newShelter

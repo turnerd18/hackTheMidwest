@@ -1,8 +1,9 @@
 package user
 
 import (
-	//"appengine"
-	//"appengine/datastore"
+	"appengine"
+	"appengine/datastore"
+	aeuser "appengine/user"
 	"html/template"
 	"net/http"
 )
@@ -14,9 +15,18 @@ func init() {
 var userTmpls = template.Must(template.ParseFiles("templates/base.html", "perfectpet4me/user/templates/user.html"))
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	//User u :=
+	c := appengine.NewContext(r)
+	aeu := aeuser.Current(c)
+	k := datastore.NewKey(c, "user", aeu.Email, 0, nil)
 
-	if err := userTmpls.Execute(w, nil); err != nil {
+	var u User
+
+	if err := datastore.Get(c, k, &u); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	if err := userTmpls.Execute(w, u); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
