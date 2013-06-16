@@ -5218,6 +5218,16 @@ body { padding-bottom: 40px; color: #5a5a5a; }
 
     .marketing .col-lg-4 p { margin-left: 10px; margin-right: 10px; }
 
+/* Main marketing message and sign up button */
+  .jumbotron {
+    text-align: center;
+    background-color: transparent;
+  }
+  .jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+  }
+
 
 
 /* Featurettes */
