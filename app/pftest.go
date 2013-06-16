@@ -18,7 +18,8 @@ func start(w http.ResponseWriter, r *http.Request) {
         fmt.Fprintf(w, "%v\n", "error")
     }
 
-    testpet := pf.GetPet("dog","66067")
-    fmt.Fprintf(w, "%v\n", testpet.Name["$t"])
-    fmt.Fprintf(w, "%v\n", testpet.Id["$t"])
+    testpet := pf.GetPet("dog","66061")
+    fmt.Fprintf(w, "%v\n", testpet.Name)
+    fmt.Fprintf(w, "%v\n", testpet.Id)
+    fmt.Fprintf(w, "%v\n", testpet)
 }

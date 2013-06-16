@@ -7,10 +7,12 @@ import (
     "io/ioutil"
     "encoding/json"
     "net/http"
+    petp "perfectpet4me/pet"
     "strings"
 
     "appengine"
     "appengine/urlfetch"
+    simplejson "github.com/bitly/go-simplejson"
 )
 
 /**********************************************************
@@ -128,7 +130,7 @@ func NewPetFinder(w http.ResponseWriter, r *http.Request) (*PetFinder) {
     return pf
 }
 
-func (pf *PetFinder) GetPet(animal string, location string) (*PetType) {
+func (pf *PetFinder) GetPet(animal string, location string) (*petp.Pet) {
     errstr := ""
     method := "pet.find"
     args := map[string]string {
@@ -145,11 +147,31 @@ func (pf *PetFinder) GetPet(animal string, location string) (*PetType) {
         return nil
     }
 
+    j, _ := simplejson.NewJson(body)
+    p := new(petp.Pet)
+    jo := j.Get("petfinder").Get("pets").Get("pet")
+    p.Id, _ = jo.Get("id").Get("$t").String()
+    p.Name, _ = jo.Get("name").Get("$t").String()
+    p.Age, _ = jo.Get("age").Get("$t").String()
+    p.AnimalType, _ = jo.Get("animal").Get("$t").String()
+    p.Breed, _ = jo.Get("breeds").Get("breed").Get("$t").String()
+    p.Sex, _ = jo.Get("sex").Get("$t").String()
+    x, _ := jo.Get("media").Get("photos").Get("photo").GetIndex(0).Get("$t").String()
+    t, _ := jo.Get("media").Get("photos").Get("photo").GetIndex(4).Get("$t").String()
+    p.PictureURLs[0] = map[string]string {
+        "x" : x,
+        "t" : t,
+    }
+    //temp, _ := jo.Get("media").Get("photos").Get("photo").GetIndex(0).Get("$t").String()
+    //fmt.Fprintf(pf.w, "%v\n", temp)
+
+    return p
+    /*
+    fmt.Fprintf(pf.w, "%v\n", p.Breed)
+
     pfetch := new(PetFetcher)
     err := json.Unmarshal(body, &pfetch)
     if err != nil {
-        fmt.Fprintf(pf.w, "%v\n", getstr)
-        fmt.Fprintf(pf.w, "%v\n", body)
         fmt.Fprintf(pf.w, "%v\n", err.Error())
     }
 
@@ -171,14 +193,6 @@ func (pf *PetFinder) GetPet(animal string, location string) (*PetType) {
         pfetch.Petfinder.Pets.Pet.Media.Photos.Photo
         )
 */
-
-
-/*
-    p.Name = "butthead"
-
-    pets := []*pet.Pet{p}
-    return pets
-    */
 }
 
 func (pf *PetFinder) RequestBuilder(apicall string, args map[string]string) string {
