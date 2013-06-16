@@ -7,9 +7,7 @@ import (
     "io/ioutil"
     "encoding/json"
     "net/http"
-    "perfectpet4me/pet"
     "strings"
-    "strconv"
 
     "appengine"
     "appengine/urlfetch"
@@ -32,6 +30,7 @@ type PetFinder struct {
     Expires string
     w http.ResponseWriter
     r *http.Request
+    LastOffset int
 }
 
 type TokenFetcher struct {
@@ -44,17 +43,42 @@ type TokenFetcher struct {
     }
 }
 
-type PetsFetcher struct {
-    /*
-    Petfinder struct {
-        Pets struct {
-            Pet struct {
-                Animal map[string]string
-            }
+type PetType struct {
+    Animal map[string]string
+    Options struct {
+            Option [](map[string]string) `json:"option"`
+        }
+    ShelterPetId map[string]string
+    Name map[string]string
+    Contact struct {
+        Email map[string]string
+        Zip map[string]string
+        City map[string]string
+        Fax map[string]string
+        Address1 map[string]string
+        Phone map[string]string
+        State map[string]string
+        Address2 map[string]string
+    }
+    Description map[string]string
+    Sex map[string]string
+    Age map[string]string
+    ShelterId map[string]string
+    LastUpdate map[string]string
+    Media struct {
+        Photos struct {
+            Photo [](map[string]string) `json:"photo"`
         }
     }
-    */
-    Lo string `json:"petfinder>lastOffset>$t`
+    Size map[string]string
+}
+
+type PetFetcher struct {
+    Petfinder struct {
+        Pets struct {
+            Pet PetType
+        }
+    }
 }
 
 /**********************************************************
@@ -73,14 +97,12 @@ func (pf *PetFinder) SetToken(w http.ResponseWriter, r *http.Request) (string) {
         "key" : API_KEY,
     }
     getstr := pf.RequestBuilder(method, args)
-        fmt.Fprintf(pf.w, "%v\n", getstr)
 
     body, _ := pf.Execute(getstr)
 
     tf := new(TokenFetcher)
     err := json.Unmarshal(body, &tf)
     if err != nil {
-        fmt.Fprintf(w, "%v\n", body)
         fmt.Fprintf(w, "%v\n", err.Error())
         errstr = "couldn't unmarshal"
         return errstr
@@ -105,9 +127,7 @@ func NewPetFinder(w http.ResponseWriter, r *http.Request) (*PetFinder) {
     return pf
 }
 
-func (pf *PetFinder) GetPets(animal string, location string, numResults int) ([]*pet.Pet) {
-    p := new(pet.Pet)
-
+func (pf *PetFinder) GetPet(animal string, location string) (*PetType) {
     errstr := ""
     method := "pet.find"
     args := map[string]string {
@@ -115,48 +135,49 @@ func (pf *PetFinder) GetPets(animal string, location string, numResults int) ([]
         "token"     : pf.Token,
         "animal"    : animal,
         "location"  : location,
-        "count"     : strconv.Itoa(numResults),
+        "count"     : "1",
     }
     getstr := pf.RequestBuilder(method, args)
-        fmt.Fprintf(pf.w, "%v\n", getstr)
 
     body, errstr := pf.Execute(getstr)
     if errstr != "" {
         return nil
     }
-/*
-    fmt.Fprintf(pf.w, "BODY: %v\n", string(body))
-    str := string(body)
-    if i := strings.Index(str, "\"pets\" : ["); i != -1 {
-        str = str[i:]
-    }
-    if i := strings.Index(str, "]},\"header\""); i != -1 {
-        str = str[:i]
-    }
-    fmt.Fprintf(pf.w, "BODY: %v\n", str)
-*/
 
-
-    var f interface{}
-    //pfetch := new(PetsFetcher)
-    err := json.Unmarshal(body, &f)
-    //err := json.Unmarshal(body, &pfetch)
+    pfetch := new(PetFetcher)
+    err := json.Unmarshal(body, &pfetch)
     if err != nil {
         fmt.Fprintf(pf.w, "%v\n", getstr)
         fmt.Fprintf(pf.w, "%v\n", body)
         fmt.Fprintf(pf.w, "%v\n", err.Error())
     }
 
-    fmt.Fprintf(pf.w, "BODY: %v\n", string(body))
-    a := f.(map[string]interface{})
-    b := a["petfinder"].(map[string]interface{})
-    c := b["pets"].(map[string]interface{})
-    fmt.Fprintf(pf.w, "PETSFETCHER: %v\n", c)
+    return &pfetch.Petfinder.Pets.Pet
+/*
+    p = NewPet(
+        pfetch.Petfinder.Pets.Pet.Name["$t"],
+        pfetch.Petfinder.Pets.Pet.Age["$t"],
+        pfetch.Petfinder.Pets.Pet.Sex["$t"],
+"border collie",//        pfetch.Petfinder.Pets.Pet.Breed,
+        pfetch.Petfinder.Pets.Pet.Size["$t"],
+        pfetch.Petfinder.Pets.Pet.ShelterId["$t"],
+        pfetch.Petfinder.Pets.Pet.Contact.City["$t"],
+        pfetch.Petfinder.Pets.Pet.Contact.Phone["$t"],
+        pfetch.Petfinder.Pets.Pet.Contact.Email["$t"],
+        pfetch.Petfinder.Pets.Pet.Contact.Address1["$t"],
+        pfetch.Petfinder.Pets.Pet.Contact.Address2["$t"],
+        pfetch.Petfinder.Pets.Pet.Contact.State["$t"],
+        pfetch.Petfinder.Pets.Pet.Media.Photos.Photo
+        )
+*/
 
+
+/*
     p.Name = "butthead"
 
     pets := []*pet.Pet{p}
     return pets
+    */
 }
 
 func (pf *PetFinder) RequestBuilder(apicall string, args map[string]string) string {

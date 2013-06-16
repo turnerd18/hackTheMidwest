@@ -4,7 +4,6 @@ import (
     "fmt"
     "net/http"
     "perfectpet4me/petfinder"
-//    "perfectpet4me/pet"
 )
 
 func init() {
@@ -19,6 +18,6 @@ func start(w http.ResponseWriter, r *http.Request) {
         fmt.Fprintf(w, "%v\n", "error")
     }
 
-    testpet := pf.GetPets("dog","66067", 5)
-    fmt.Fprintf(w, "%v\n", testpet[0].Name)
+    testpet := pf.GetPet("dog","66067")
+    fmt.Fprintf(w, "%v\n", testpet.Name["$t"])
 }
