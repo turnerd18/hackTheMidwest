@@ -1,8 +1,8 @@
 {{define "content"}} 
   <div class="row">
 
-    <div class="col col-lg-3">SIDEBAR</div>
-    <div class="col col-lg-9">MAIN CONTENT CONTAINER</div>
+    <div class="col col-lg-3"></div>
+    <div class="col col-lg-9"></div>
 
     We may help you in one of 3 ways:
     <ul>
@@ -15,9 +15,11 @@
       <div>
       	<h2>How can we help you?</h2>
 
-      		<input type="radio" name="group1" value="Milk">I need help finding the best match for me<br>
-      		<input type="radio" name="group1" value="Milk">I know what I want and need help locating a match<br>
-      		<input type="radio" name="group1" value="lucky" selected="selected">I feel lucky<br>
+        <div class="radio">
+      		<label for="sol"><input id="sol" type="radio" name="group1" value="shitoutofluck">I need help finding the best match for me</label><br>
+      		<label for="nudp"><input id="nudp" type="radio" name="group1" value="noturdaypal">I know what I want and need help locating a match</label><br>
+      		<label for="luck"><input id="luck" type="radio" name="group1" value="lucky" checked="true">I feel lucky</label><br>
+        </div>
       </div>
 
       <div class="hidden">
@@ -120,14 +122,16 @@
       <!-- Dog, Cat, Small&Furry, BarnYard, Bird, Horse, Pig, Rabbit, or Reptile -->
       You are feeling lucky, what describes you the best?
       <br>
-      <input type="radio" name="lucky" value="pig">Mmmmmmmmm, bacon.<br>
-      <input type="radio" name="lucky" value="reptile">I am a Parselmouth and need someone to talk to.<br>
-      <input type="radio" name="lucky" value="bird">I am a pirate and feel naked without something on my shoulder.<br>
-      <input type="radio" name="lucky" value="horse">I watched My Little Pony growing up and want to reconnect with Mr. Ed.<br>
-      <input type="radio" name="lucky" value="small&amp;furry">Night of the Hell Hamster and G-Force are the best movies I have ever seen.<br>
-      <input type="radio" name="lucky" value="rabbit">I hop around a lot and Easter is my favorite holiday.<br>
-      <input type="radio" name="lucky" value="dog">I am not affraid to share my Scooby Snacks and need someone to help me solve mysteries.<br>
-      <input type="radio" name="lucky" value="cat">Crazy? Insane cat lady(boy) is more like it.
+      <div class="radio">
+        <label for="piggy"><input id="piggy" type="radio" name="lucky" value="pig">Mmmmmmmmm, bacon.</label><br>
+        <label for="snake"><input id="snake" type="radio" name="lucky" value="reptile">I am a Parselmouth and need someone to talk to.</label><br>
+        <label for="birdy"><input id="birdy" type="radio" name="lucky" value="bird">I am a pirate and feel naked without something on my shoulder.</label><br>
+        <label for="whorse"><input id="whorse" type="radio" name="lucky" value="horse">I watched My Little Pony growing up and want to reconnect with Mr. Ed.</label><br>
+        <label for="fury"><input id="fury" type="radio" name="lucky" value="small&amp;furry">Night of the Hell Hamster and G-Force are the best movies I have ever seen.</label><br>
+        <label for="rabbi"><input id="rabbi" type="radio" name="lucky" value="rabbit">I hop around a lot and Easter is my favorite holiday.</label><br>
+        <label for="dogs"><input id="dogs" type="radio" name="lucky" value="dog">I am not affraid to share my Scooby Snacks and need someone to help me solve mysteries.</label><br>
+        <label for="cats"><input id="cats" type="radio" name="lucky" value="cat">Crazy? Insane cat lady(boy) is more like it.</label>
+      </div>
       <br>
       <!-- END of I am Feeling lucky section-->
 

@@ -4,7 +4,8 @@ import (
 	"appengine"
 	"appengine/datastore"
 	aeuser "appengine/user"
-	"fmt"
+	//"fmt"
+	"html"
 	"html/template"
 	"net/http"
 	"perfectpet4me/petfinder"
@@ -38,10 +39,11 @@ func luckyStrike(w http.ResponseWriter, r *http.Request) {
 	}
 
 	pf := petfinder.NewPetFinder(w, r)
-	fmt.Fprintf(w, "%v %v", r.FormValue("lucky"), u.Zip)
+	//fmt.Fprintf(w, "%v %v", r.FormValue("lucky"), u.Zip)
 	foundPet := pf.GetPet(r.FormValue("lucky"), u.Zip)
+	foundPet.Description = html.UnescapeString(foundPet.Description)
 
-	fmt.Fprintf(w, "%v", foundPet)
+	//fmt.Fprintf(w, "%v", foundPet)
 	if err := resTmpls.Execute(w, foundPet); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
