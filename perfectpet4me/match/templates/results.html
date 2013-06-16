@@ -1,7 +1,7 @@
 {{define "content"}}
   <div class="row">
 
-    <div class="col col-lg-3">SIDEBAR</div>
+    <div class="col col-lg-3"></div>
       <center>About Me</center><br>
       <label for="petname">Name: <input type="text" name="petname" placeholder="Pet Name" value='{{.Name}}'></label><br>
       <label for="pettype">Type: <input type="text" name="pettype" placeholder="Pet Type" value='{{.AnimalType}}'></label><br>
@@ -25,12 +25,12 @@
       Email:<input type="text" name="email" placeholder="Email" value="{{.Email}}"><br> */}}
       </div>
 
-      <div class="col col-lg-9">MAIN CONTENT CONTAINER
-      {{/*{{if .PictureURLs}}{{index index .PictureURLs 0 "x"}}{{end}}*/}}
+      <div class="col col-lg-9">
+      {{if .PictureURLs}}<img src='{{index .PictureURLs 0 "x"}}'>{{end}}
       <br>
       Description:<br>
       {{.Description}}
     </div>
-    {{.}}
+    {{/*.*/}}
   </div><!-- /.row -->
 {{end}}
