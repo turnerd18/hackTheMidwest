@@ -4,13 +4,14 @@ type Pet struct {
 	Name        string
 	Age         string //Baby, Young, Adult, or Senior
 	Sex         string // M or F
-    Id          string
+	Id          string
 	AnimalType  string //Dog, Cat, Small&Furry, BarnYard, Bird, Horse, Pig, Rabbit, or Reptile
 	Breed       string
 	Size        string //S, M, L, or XL
 	ShelterID   string //ID of shelter the pet is at
 	ContactInfo map[string]string
 	PictureURLs [5]map[string]string //map keys = {"x", "fpm", "pn", "pnt", "t"} in that order
+	Description string
 }
 
 func NewPet1(newName, newAge, newSex, newAnimalType, newBreed, newSize,
@@ -30,7 +31,7 @@ func NewPet1(newName, newAge, newSex, newAnimalType, newBreed, newSize,
 }
 
 func NewPet(newName, newAge, newSex, newAnimalType, newBreed, newSize, newShelterID,
-	newContactName, newPhone, newEmail, newAddress1, newAddress2, newCityState, newZip string,
+	newContactName, newPhone, newEmail, newAddress1, newAddress2, newCityState, newZip, description string,
 	newPic1, newPic2, newPic3, newPic4, newPic5 map[string]string) *Pet {
 
 	newPet := new(Pet)
@@ -42,6 +43,7 @@ func NewPet(newName, newAge, newSex, newAnimalType, newBreed, newSize, newShelte
 	newPet.Breed = newBreed
 	newPet.Size = newSize
 	newPet.ShelterID = newShelterID
+	newPet.Description = description
 
 	newPet.ContactInfo = make(map[string]string)
 	newPet.ContactInfo["ContactName"] = newContactName

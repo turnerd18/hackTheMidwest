@@ -46,4 +46,6 @@ func save(w http.ResponseWriter, r *http.Request) {
 
 	u.Zip = r.FormValue("zip")
 	datastore.Put(c, k, &u)
+
+	http.Redirect(w, r, "/search", http.StatusMovedPermanently)
 }

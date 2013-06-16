@@ -1,135 +1,138 @@
-  
+{{define "content"}} 
   <div class="row">
 
     <div class="col col-lg-3">SIDEBAR</div>
     <div class="col col-lg-9">MAIN CONTENT CONTAINER</div>
 
     We may help you in one of 3 ways:
-<ul>
-<li>Provide us details about you and your family and we will return matches that match your environment and lifestyle.</li>
-<li>Use the I am feeling lucky feature and we will surprise you with an interesting match</li>
-<li>If you know what you want, give us your criteria and we will look for a match for you based on the specific criteria you provided.</li>
-</ul>
+    <ul>
+      <li>Provide us details about you and your family and we will return matches that match your environment and lifestyle.</li>
+      <li>Use the I am feeling lucky feature and we will surprise you with an interesting match</li>
+      <li>If you know what you want, give us your criteria and we will look for a match for you based on the specific criteria you provided.</li>
+    </ul>
 
-<div>
-	<h2>How can we help you?</h2>
+    <form action="search/results" method="post">
+      <div>
+      	<h2>How can we help you?</h2>
 
-		<input type="radio" name="group1" value="Milk">I need help finding the best match for me<br>
-		<input type="radio" name="group1" value="Milk">I know what I want and need help locating a match<br>
-		<input type="radio" name="group1" value="Milk">I feel lucky<br>
-</div>
+      		<input type="radio" name="group1" value="Milk">I need help finding the best match for me<br>
+      		<input type="radio" name="group1" value="Milk">I know what I want and need help locating a match<br>
+      		<input type="radio" name="group1" value="lucky" selected="selected">I feel lucky<br>
+      </div>
 
+      <div class="hidden">
+        <!--HERE IS THE RADIO BUTTON SECTION WHERE THEY SELECT THE SEARCH TYPE-->
 
-<!--HERE IS THE RADIO BUTTON SECTION WHERE THEY SELECT THE SEARCH TYPE-->
+        <!--SECTION 1, USER SELECTED TO PROVIDE US DETAILS-->
 
-<!--SECTION 1, USER SELECTED TO PROVIDE US DETAILS-->
+        <b>Tell us about your current pet situation</b>
+        <br>
+        Do you have a pet currently?
+        <br>
+        <input type="checkbox" name="group1" value="Milk">Yes
+        <input type="checkbox" name="group1" value="Milk">No
+        <br>
+        <br>
+        Is the other pet a
+        <br>
+        <input type="checkbox" name="group1" value="Milk">Baby
+        <input type="checkbox" name="group1" value="Milk">Young
+        <input type="checkbox" name="group1" value="Milk">Adult
+        <input type="checkbox" name="group1" value="Milk">Senior
+        <br>
+        <br>
+        What other animals do you have?
+        <br>
+        <input type="checkbox" name="group1" value="Milk">Cat
+        <input type="checkbox" name="group1" value="Milk">Dog
+        <input type="checkbox" name="group1" value="Milk">Small & Furry
+        <input type="checkbox" name="group1" value="Milk">Bird
+        <input type="checkbox" name="group1" value="Milk">Snake
+        <br>
+        <br>
+        Do you have a pet currently?
+        <br>
+        <input type="checkbox" name="group1" value="Milk">Yes
+        <input type="checkbox" name="group1" value="Milk">No
+        <br>
+        <br>
+        <br>
+        <b>Tell us about your family and living arrangments</b>
+        <br>
+        Describe your family
+        <br>
+        <input type="radio" name="group1" value="Milk">Just me
+        <input type="radio" name="group1" value="Milk">Me and my partner
+        <input type="radio" name="group1" value="Milk">I have kids
+        <br>
+        <br>
+        I have kids that are
+        <br>
+        <input type="radio" name="group1" value="Milk">Under 5
+        <input type="radio" name="group1" value="Milk">Between 5 and 10
+        <input type="radio" name="group1" value="Milk">Older than 10
+        <br>
+        <br>
 
-<b>Tell us about your current pet situation</b>
-<br>
-Do you have a pet currently?
-<br>
-<input type="checkbox" name="group1" value="Milk">Yes
-<input type="checkbox" name="group1" value="Milk">No
-<br>
-<br>
-Is the other pet a
-<br>
-<input type="checkbox" name="group1" value="Milk">Baby
-<input type="checkbox" name="group1" value="Milk">Young
-<input type="checkbox" name="group1" value="Milk">Adult
-<input type="checkbox" name="group1" value="Milk">Senior
-<br>
-<br>
-What other animals do you have?
-<br>
-<input type="checkbox" name="group1" value="Milk">Cat
-<input type="checkbox" name="group1" value="Milk">Dog
-<input type="checkbox" name="group1" value="Milk">Small & Furry
-<input type="checkbox" name="group1" value="Milk">Bird
-<input type="checkbox" name="group1" value="Milk">Snake
-<br>
-<br>
-Do you have a pet currently?
-<br>
-<input type="checkbox" name="group1" value="Milk">Yes
-<input type="checkbox" name="group1" value="Milk">No
-<br>
-<br>
-<br>
-<b>Tell us about your family and living arrangments</b>
-<br>
-Describe your family
-<br>
-<input type="radio" name="group1" value="Milk">Just me
-<input type="radio" name="group1" value="Milk">Me and my partner
-<input type="radio" name="group1" value="Milk">I have kids
-<br>
-<br>
-I have kids that are
-<br>
-<input type="radio" name="group1" value="Milk">Under 5
-<input type="radio" name="group1" value="Milk">Between 5 and 10
-<input type="radio" name="group1" value="Milk">Older than 10
-<br>
-<br>
+        I live in
+        <br>
+        <input type="radio" name="group1" value="Milk">City
+        <input type="radio" name="group1" value="Milk">Suburb
+        <input type="radio" name="group1" value="Milk">Rural area
+        <br>
+        <br>
+        I am in
+        <br>
+        <input type="radio" name="group1" value="Milk">Apartment
+        <input type="radio" name="group1" value="Milk">Condo
+        <input type="radio" name="group1" value="Milk">House
+        <br>
+        <br>
+        Do you have a fenced in yard?
+        <br>
+        <input type="radio" name="group1" value="Milk">Yes
+        <input type="radio" name="group1" value="Milk">No
+        <br>
+        <br>
+        Do you own or rent?
+        <input type="radio" name="group1" value="Milk">Own
+        <input type="radio" name="group1" value="Milk">Rent
+        <br>
+        <br>
+        Are there limitations to the pets you can own due to rent, agreements, associations, etc...?
+        <br>
+        <input type="checkbox" name="group1" value="Milk">Barn Yard
+        <input type="checkbox" name="group1" value="Milk">Birds
+        <input type="checkbox" name="group1" value="Milk">Cats
+        <br>
+        <input type="checkbox" name="group1" value="Milk">Dogs
+        <input type="checkbox" name="group1" value="Milk">Horse
+        <input type="checkbox" name="group1" value="Milk">Pig
+        <br>
+        <input type="checkbox" name="group1" value="Milk">Dogs
+        <input type="checkbox" name="group1" value="Milk">Horse
+        <input type="checkbox" name="group1" value="Milk">Pig
+        <br>
+        <br>
+      </div>
 
-I live in
-<br>
-<input type="radio" name="group1" value="Milk">City
-<input type="radio" name="group1" value="Milk">Suburb
-<input type="radio" name="group1" value="Milk">Rural area
-<br>
-<br>
-I am in
-<br>
-<input type="radio" name="group1" value="Milk">Apartment
-<input type="radio" name="group1" value="Milk">Condo
-<input type="radio" name="group1" value="Milk">House
-<br>
-<br>
-Do you have a fenced in yard?
-<br>
-<input type="radio" name="group1" value="Milk">Yes
-<input type="radio" name="group1" value="Milk">No
-<br>
-<br>
-Do you own or rent?
-<input type="radio" name="group1" value="Milk">Own
-<input type="radio" name="group1" value="Milk">Rent
-<br>
-<br>
-Are there limitations to the pets you can own due to rent, agreements, associations, etc...?
-<br>
-<input type="checkbox" name="group1" value="Milk">Barn Yard
-<input type="checkbox" name="group1" value="Milk">Birds
-<input type="checkbox" name="group1" value="Milk">Cats
-<br>
-<input type="checkbox" name="group1" value="Milk">Dogs
-<input type="checkbox" name="group1" value="Milk">Horse
-<input type="checkbox" name="group1" value="Milk">Pig
-<br>
-<input type="checkbox" name="group1" value="Milk">Dogs
-<input type="checkbox" name="group1" value="Milk">Horse
-<input type="checkbox" name="group1" value="Milk">Pig
-<br>
-<br>
+      <!-- I am feeling lucky section-->
+      <!-- Dog, Cat, Small&Furry, BarnYard, Bird, Horse, Pig, Rabbit, or Reptile -->
+      You are feeling lucky, what describes you the best?
+      <br>
+      <input type="radio" name="lucky" value="pig">Mmmmmmmmm, bacon.<br>
+      <input type="radio" name="lucky" value="reptile">I am a Parselmouth and need someone to talk to.<br>
+      <input type="radio" name="lucky" value="bird">I am a pirate and feel naked without something on my shoulder.<br>
+      <input type="radio" name="lucky" value="horse">I watched My Little Pony growing up and want to reconnect with Mr. Ed.<br>
+      <input type="radio" name="lucky" value="small&amp;furry">Night of the Hell Hamster and G-Force are the best movies I have ever seen.<br>
+      <input type="radio" name="lucky" value="rabbit">I hop around a lot and Easter is my favorite holiday.<br>
+      <input type="radio" name="lucky" value="dog">I am not affraid to share my Scooby Snacks and need someone to help me solve mysteries.<br>
+      <input type="radio" name="lucky" value="cat">Crazy? Insane cat lady(boy) is more like it.
+      <br>
+      <!-- END of I am Feeling lucky section-->
 
-<--! I am feeling lucky section-->
-You are feeling lucky, what describes you the best?
-<br>
-<input type="radio" name="group1" value="Milk">I like bacon<br>
-<input type="radio" name="group1" value="Milk">I am a Parselmouth and need someone to talk to<br>
-<input type="radio" name="group1" value="Milk">I am a pirate and feel nude without something on my shoulder<br>
-<input type="radio" name="group1" value="Milk">I watched my little pony growing up and want to reconnect with Mr Ed<br>
-<input type="radio" name="group1" value="Milk">Night of the hell hamster and G-Force are the best movies I have ever seen<br>
-<input type="radio" name="group1" value="Milk">I hop around a lot and easter is my favorite holiday<br>
-<input type="radio" name="group1" value="Milk">I am not affraid to share my Scooby snacks and need someone to help me solve mysteries<br>
-<br>
-<--! END of I am Feeling lucky section-->
-
-
-
-</div>
-
-    
+      </div>
+      <input type="submit" value="Search">
+    </form>
   </div><!-- /.row -->
+{{end}}

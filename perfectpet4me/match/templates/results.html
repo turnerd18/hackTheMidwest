@@ -1,7 +1,36 @@
-
+{{define "content"}}
   <div class="row">
 
     <div class="col col-lg-3">SIDEBAR</div>
-    <div class="col col-lg-9">MAIN CONTENT CONTAINER</div>
-    
+      <center>About Me</center><br>
+      <label for="petname">Name: <input type="text" name="petname" placeholder="Pet Name" value='{{.Name}}'></label><br>
+      <label for="pettype">Type: <input type="text" name="pettype" placeholder="Pet Type" value='{{.AnimalType}}'></label><br>
+      <label for="petbreed">Breed: <input type="text" name="petbreed" placeholder="Pet Breed" value='{{.Breed}}'></label><br>
+      <label for="petgender">Gender: <input type="text" name="petgender" placeholder="Gender" value='{{.Sex}}'></label><br>
+      {{/* <label for="petstatus">Status: <input type="text" name="petstatus" placeholder="Status" value="{{.Status}}">Status<br> */}}
+      <br>
+          
+      <br>
+      <center>Important Info</center><br>
+      <!--Display the information returned in the options tag-->
+
+      <br>    
+      <br>
+      {{/* <center>Shelter Info</center><br>
+      Address:<br><input type="text" name="address1" placeholder="Address1"><br>
+      <input type="text" name="address2" placeholder="Address2"><br>
+      <input type="text" name="city" placeholder="City">, <input type="text" name="state" placeholder="state"><br>
+      <input type="text" name="zip" placeholder="zip"><br> -->
+      Phone:<input type="text" name="phone" placeholder="Phone"><br>
+      Email:<input type="text" name="email" placeholder="Email" value="{{.Email}}"><br> */}}
+      </div>
+
+      <div class="col col-lg-9">MAIN CONTENT CONTAINER
+      {{/*{{if .PictureURLs}}{{index index .PictureURLs 0 "x"}}{{end}}*/}}
+      <br>
+      Description:<br>
+      {{.Description}}
+    </div>
+    {{.}}
   </div><!-- /.row -->
+{{end}}

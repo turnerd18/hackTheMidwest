@@ -6,21 +6,21 @@ api_version: go1
 handlers:
   - url: /index\.html
     static_files: templates/index.html
-    upload: index\.html
+    upload: templates/index\.html
 
-  - url: /css
+  - url: .*/css
     static_dir: templates/css
 
-  - url: /fonts
+  - url: .*/fonts
     static_dir: templates/fonts
 
-  - url: /ico
+  - url: .*/ico
     static_dir: templates/ico
 
-  - url: /img
+  - url: .*/img
     static_dir: templates/img
 
-  - url: /js
+  - url: .*/js
     static_dir: templates/js
 
   - url: /.*
