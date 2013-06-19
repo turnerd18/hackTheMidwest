@@ -23,6 +23,9 @@ handlers:
 - url: .*/js
   static_dir: templates/js
 
+- url: /.*
+  script: perfectpet4me.application
+
 libraries:
 - name: webapp2
   version: latest
