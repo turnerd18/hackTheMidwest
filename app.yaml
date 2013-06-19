@@ -1,28 +1,30 @@
-application: perfectpet4me
+application: dtgoapps
 version: 1
-runtime: go
-api_version: go1
+runtime: python27
+api_version: 1
+threadsafe: true
 
 handlers:
-  - url: /index\.html
-    static_files: templates/index.html
-    upload: templates/index\.html
+- url: /stylesheets
+  static_dir: stylesheets
 
-  - url: .*/css
-    static_dir: templates/css
+- url: .*/css
+  static_dir: templates/css
 
-  - url: .*/fonts
-    static_dir: templates/fonts
+- url: .*/fonts
+  static_dir: templates/fonts
 
-  - url: .*/ico
-    static_dir: templates/ico
+- url: .*/ico
+  static_dir: templates/ico
 
-  - url: .*/img
-    static_dir: templates/img
+- url: .*/img
+  static_dir: templates/img
 
-  - url: .*/js
-    static_dir: templates/js
+- url: .*/js
+  static_dir: templates/js
 
-  - url: /.*
-    script: _go_app
-    login: required
+libraries:
+- name: webapp2
+  version: latest
+- name: jinja2
+  version: latest
